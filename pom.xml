@@ -54,7 +54,7 @@
 
 	<scm>
 		<developerConnection>
-			scm:git:git@github.com:fhery021/sfg-pet-clinic.git
+			scm:git:https://github.com/fhery021/sfg-pet-clinic.git
 		</developerConnection>
 	  <tag>sfg-pet-clinic-0.0.1</tag>
   </scm>
