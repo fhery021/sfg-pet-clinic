@@ -3,7 +3,7 @@ package guru.springframework.sfgpetclinic.model;
 /**
  * Created by Ferenc on 12/27/2018.
  */
-public class PetType {
+public class PetType extends BaseEntity{
     private String name;
 
     public String getName() {
