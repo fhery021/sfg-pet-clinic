@@ -1,14 +1,13 @@
 package guru.springframework.sfgpetclinic.map;
 
 import guru.springframework.sfgpetclinic.model.Person;
-import guru.springframework.sfgpetclinic.services.CrudService;
 
 import java.util.Set;
 
 /**
  * Created by Ferenc on 12/29/2018.
  */
-public class PersonServiceMap extends AbstractMapService<Person, Long> implements CrudService<Person, Long> {
+public class PersonServiceMap extends AbstractMapService<Person, Long> {
 
     @Override
     public Set<Person> findAll() {

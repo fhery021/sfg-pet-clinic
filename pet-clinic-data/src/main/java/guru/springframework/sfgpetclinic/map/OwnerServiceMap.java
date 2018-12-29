@@ -1,14 +1,13 @@
 package guru.springframework.sfgpetclinic.map;
 
 import guru.springframework.sfgpetclinic.model.Owner;
-import guru.springframework.sfgpetclinic.services.CrudService;
 
 import java.util.Set;
 
 /**
  * Created by Ferenc on 12/29/2018.
  */
-public class OwnerServiceMap extends AbstractMapService<Owner, Long> implements CrudService<Owner, Long> {
+public class OwnerServiceMap extends AbstractMapService<Owner, Long>{
     @Override
     public Set<Owner> findAll() {
         return super.findAll();
