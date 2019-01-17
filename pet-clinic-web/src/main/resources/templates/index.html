@@ -1,14 +1,15 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{fragments/layout :: layout (~{::body},'home')}">
+
 <head>
     <meta charset="UTF-8">
     <title>Pet Clinic Index</title>
 </head>
 <body>
-    <h2 th:text="'Index'">Index Page</h2>
+    <h2 th:text="#{welcome}">Welcome</h2>
     <div class="row">
         <div class="col-md-12">
-            <img class="img-responsive" src="../static/resources/images/pets.png" th:src="@{../static/images/pets.png}"/>
+            <img class="img-responsive" src="../static/images/pets.png" th:src="@{/images/pets.png}"/>
         </div>
     </div>
 
