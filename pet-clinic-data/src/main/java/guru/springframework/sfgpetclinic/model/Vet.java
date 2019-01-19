@@ -17,7 +17,7 @@ public class Vet extends Person {
         this.specialties = specialties;
     }
 
-    public int nrOfSpecialties(){
+    public int getNrOfSpecialties(){
         return specialties.size();
     }
 }

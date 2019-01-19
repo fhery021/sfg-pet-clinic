@@ -23,7 +23,7 @@
         <td th:text="${vet.firstName}">Joe</td>
         <td th:text="${vet.lastName}">Buck</td>
         <td><span th:each="specialty : ${vet.specialties}"
-                  th:text="${specialty.name + ' '}" /> <span
+                  th:text="${specialty.description + ' '}" /> <span
                 th:if="${vet.nrOfSpecialties == 0}">none</span></td>
     </tr>
     </tbody>

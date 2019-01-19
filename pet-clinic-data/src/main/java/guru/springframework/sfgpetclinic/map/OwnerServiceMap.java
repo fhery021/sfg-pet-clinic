@@ -7,8 +7,6 @@ import guru.springframework.sfgpetclinic.services.PetService;
 import guru.springframework.sfgpetclinic.services.PetTypeService;
 import org.springframework.stereotype.Service;
 
-import java.util.Set;
-
 /**
  * Created by Ferenc on 12/29/2018.
  */
@@ -23,15 +21,12 @@ public class OwnerServiceMap extends AbstractMapService<Owner, Long> implements 
         this.petService = petService;
     }
 
-    @Override
-    public Set<Owner> findAll() {
-        return super.findAll();
-    }
-
-    @Override
-    public void deleteById(Long id) {
-        super.deleteById(id);
-    }
+    // how to override any method:
+//    @Override
+//    public Set<Owner> findAll() {
+//        <do stuff here>
+//        return super.findAll();
+//    }
 
     @Override
     public void delete(Owner object) {
@@ -61,11 +56,6 @@ public class OwnerServiceMap extends AbstractMapService<Owner, Long> implements 
         }else{
             return null;
         }
-    }
-
-    @Override
-    public Owner findById(Long id) {
-        return super.findById(id);
     }
 
     @Override
