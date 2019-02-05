@@ -19,6 +19,9 @@ public class OwnerServiceJPA extends SpringDataJpaService<Owner, Long, OwnerRepo
         super(repository);
     }
 
+    // The CRUDService from Spring boot is overridden by the superclass.
+    // From SpringDataJpaService it gets the basic CRUD operations and from OwnerService the additional ones.
+
     @Override
     public Owner findByLastName(String lastName) {
         return repository.findByLastName(lastName);

@@ -24,7 +24,7 @@ public class SpringDataJpaService<T extends BaseEntity, ID extends Long, R exten
     @Override
     public Set<T> findAll() {
         Set<T> all = new HashSet<>();
-        repository.findAll().iterator().forEachRemaining(all::add);
+        repository.findAll().forEach(all::add);
         return all;
     }
 
