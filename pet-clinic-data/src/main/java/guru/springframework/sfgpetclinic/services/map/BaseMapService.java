@@ -8,7 +8,7 @@ import java.util.*;
 /**
  * Created by Ferenc on 12/29/2018.
  */
-public class MapService<T extends BaseEntity, ID extends Long> implements CrudService<T,ID>{
+public class BaseMapService<T extends BaseEntity, ID extends Long> implements CrudService<T,ID>{
 
     private Map<Long, T> map = new HashMap<>();
 

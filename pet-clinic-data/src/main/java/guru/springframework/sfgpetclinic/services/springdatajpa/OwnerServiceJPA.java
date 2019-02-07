@@ -13,14 +13,14 @@ import org.springframework.stereotype.Service;
  */
 @Service
 @Profile("springdatajpa")
-public class OwnerServiceJPA extends SpringDataJpaService<Owner, Long, OwnerRepository> implements OwnerService {
+public class OwnerServiceJPA extends BaseJPAService<Owner, Long, OwnerRepository> implements OwnerService {
 
     public OwnerServiceJPA(OwnerRepository repository) {
         super(repository);
     }
 
     // The CRUDService from Spring boot is overridden by the superclass.
-    // From SpringDataJpaService it gets the basic CRUD operations and from OwnerService the additional ones.
+    // From BaseJPAService it gets the basic CRUD operations and from OwnerService the additional ones.
 
     @Override
     public Owner findByLastName(String lastName) {

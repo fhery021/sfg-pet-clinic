@@ -13,11 +13,11 @@ import java.util.Set;
  * Basic CRUD operations using Spring Data JPA.
  *
  */
-public class SpringDataJpaService<T extends BaseEntity, ID extends Long, R extends CrudRepository<T, Long>> implements CrudService<T, ID>{
+public class BaseJPAService<T extends BaseEntity, ID extends Long, R extends CrudRepository<T, Long>> implements CrudService<T, ID>{
 
     protected final R repository;
 
-    public SpringDataJpaService(R repository){
+    public BaseJPAService(R repository){
         this.repository = repository;
     }
 

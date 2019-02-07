@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
  */
 @Service
 @Profile("springdatajpa")
-public class SpecialtyServiceJPA extends SpringDataJpaService<Specialty, Long, SpecialtyRepository> implements SpecialtyService {
+public class SpecialtyServiceJPA extends BaseJPAService<Specialty, Long, SpecialtyRepository> implements SpecialtyService {
     public SpecialtyServiceJPA(SpecialtyRepository repository) {
         super(repository);
     }

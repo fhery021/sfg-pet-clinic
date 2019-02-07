@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
  */
 @Service
 @Profile("springdatajpa")
-public class VisitServiceJPA extends SpringDataJpaService<Visit, Long, VisitRepository> implements VisitService {
+public class VisitServiceJPA extends BaseJPAService<Visit, Long, VisitRepository> implements VisitService {
     public VisitServiceJPA(VisitRepository repository) {
         super(repository);
     }

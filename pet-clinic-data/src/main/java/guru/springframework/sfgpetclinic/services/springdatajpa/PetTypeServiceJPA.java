@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
  */
 @Service
 @Profile("springdatajpa")
-public class PetTypeServiceJPA extends SpringDataJpaService<PetType, Long, PetTypeRepository> implements PetTypeService{
+public class PetTypeServiceJPA extends BaseJPAService<PetType, Long, PetTypeRepository> implements PetTypeService{
     public PetTypeServiceJPA(PetTypeRepository repository) {
         super(repository);
     }
