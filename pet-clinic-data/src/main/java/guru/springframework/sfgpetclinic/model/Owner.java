@@ -26,7 +26,7 @@ public class Owner extends Person {
         setAddress(address);
         setCity(city);
         setTelephone(telephone);
-        setPets(pets);
+        setPets(pets != null ? pets : new HashSet<>());
     }
 
     @Column
