@@ -11,7 +11,7 @@ public class SfgPetClinicApplicationTests {
 
 	@Test
 	public void contextLoads() {
-//		assertTrue(false);
+
 	}
 
 }
