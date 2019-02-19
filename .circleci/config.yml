@@ -37,7 +37,7 @@ jobs:
           key: sfg-pet-clinic-{{ checksum "pom.xml" }}
 
       # run tests!
-      - run: mvn integration-test
+      - run: mvn package
 
       - store_test_results:
           path: target/surefire-reports
