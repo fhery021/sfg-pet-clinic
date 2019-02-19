@@ -11,6 +11,10 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import java.util.HashSet;
+import java.util.Optional;
+import java.util.Set;
+
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
@@ -19,6 +23,8 @@ import static org.mockito.Mockito.*;
 public class OwnerServiceJPATest {
 
     private static final String LAST_NAME = "Smith";
+    private static final Long ID = 1001L;
+    private Owner returnOwner;
 
     @Mock
     private OwnerRepository ownerRepository;
@@ -35,24 +41,45 @@ public class OwnerServiceJPATest {
     @InjectMocks
     OwnerServiceJPA service;
 
+
     @BeforeEach
     void setUp() {
-        service.save(Owner.builder()
-                .id(1L)
+        returnOwner = Owner.builder()
+                .id(ID)
                 .lastName("Bond")
                 .firstName("James")
                 .address("Gyepes utca 1")
                 .city("Zerind")
                 .telephone("0257 355 123")
-                .build());
+                .build();
     }
 
     @Test
     void findAll() {
+        Set<Owner> returnOwnerSet = new HashSet<>();
+        returnOwnerSet.add(Owner.builder().id(1L).build());
+        returnOwnerSet.add(Owner.builder().id(2L).build());
+
+        when(ownerRepository.findAll()).thenReturn(returnOwnerSet);
+
+        Set<Owner> owners = service.findAll();
+
+        assertNotNull(owners);
+        assertEquals(2, owners.size());
     }
 
     @Test
     void findById() {
+        when(ownerRepository.findById(anyLong())).thenReturn(java.util.Optional.ofNullable(returnOwner));
+
+        assertNotNull(service.findById(ID).get());
+    }
+
+    @Test
+    void findByIdNotFound() {
+        when(ownerRepository.findById(anyLong())).thenReturn(Optional.empty());
+
+        assertEquals(Optional.empty(), service.findById(ID));
     }
 
     @Test
@@ -65,28 +92,33 @@ public class OwnerServiceJPATest {
         Owner savedOwner = service.save(owner2);
 
         assertEquals(ID, savedOwner.getId());
-//        verify(ownerRepository, times(1)).save(owner2);
+        verify(ownerRepository, times(1)).save(owner2);
+        verify(ownerRepository).save(any());
     }
 
     @Test
     void delete() {
+        service.delete(this.returnOwner);
+        verify(ownerRepository).delete(any());
     }
 
     @Test
     void deleteById() {
+        service.deleteById(ID);
+        verify(ownerRepository).deleteById(any());
     }
 
     @Test
     void findByLastName() {
-        Owner returnOwner = Owner.builder()
+        Owner owner2 = Owner.builder()
                 .id(2L)
                 .lastName(LAST_NAME)
                 .build();
 
-        when(ownerRepository.findByLastName(any(String.class))).thenReturn(returnOwner);
-
+        when(ownerRepository.findByLastName(any())).thenReturn(owner2);
         Owner owner = service.findByLastName(LAST_NAME);
 
-        assertEquals(returnOwner, owner);
+        verify(ownerRepository).findByLastName(any());
+        assertEquals(LAST_NAME, owner.getLastName());
     }
 }
