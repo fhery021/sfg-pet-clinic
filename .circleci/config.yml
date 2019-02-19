@@ -5,7 +5,7 @@
 version: 2
 jobs:
   build:
-    working_directory: ~/PetClinic
+    working_directory: ~/sfg-pet-clinic
     docker:
       # specify the version you desire here
       - image: circleci/openjdk:8-jdk
@@ -25,7 +25,7 @@ jobs:
       # Download and cache dependencies
       - restore_cache:
           keys:
-            - PetClinic-{{ checksum "pom.xml" }}
+            - sfg-pet-clinic-{{ checksum "pom.xml" }}
 
       - run: mvn install -DskipTests
 
@@ -34,7 +34,7 @@ jobs:
       - save_cache:
           paths:
             - ~/.m2
-          key: PetClinic-{{ checksum "pom.xml" }}
+          key: sfg-pet-clinic-{{ checksum "pom.xml" }}
 
       # run tests!
       - run: mvn integration-test
@@ -43,4 +43,4 @@ jobs:
           path: target/surefire-reports
 
       - store_artifacts:
-          path: target/PetClinic-0.0.1-SNAPSHOT.jar
+          path: target/sfg-pet-clinic-0.0.1-SNAPSHOT.jar
